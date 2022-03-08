@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+
+	<TMPL_INCLUDE _header_footer.tmpl />
+	<div class="outwrapper main prel anchor-index">
+		<div class="grid indent">
+			<div class="card">
+				<div class="new-heading">Add data</div>
+				<ul>
+					<li>
+						<a
+							href="/AM/UploadSettings.cgi?species=<TMPL_IF species /><TMPL_VAR species /><TMPL_ELSE>human</TMPL_IF>">Create new project</a>
+					</li>
+					<li><a href="/AM/AnalysisSettings.cgi?species=<TMPL_VAR SPECIES>">Analyse a project</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card">
+				<div class="new-heading">Query data</div>
+				<ul>
+					<li><a href="/AM/ChooseProject.cgi?species=<TMPL_VAR SPECIES>">Query projects</a></li>
+					<li><a href="/AM/SelectPermissions.cgi?species=<TMPL_VAR SPECIES>">Grant access to your data</a></li>
+				</ul>
+			</div>
+			<div class="card">
+				<div class="new-heading">Options</div>
+				<ul>
+					<li><a href="/AutozygosityMapper/CreateProfile.html">Create a profile</a></li>
+
+					<li><a href="/AM/SelectDelete.cgi?species=<TMPL_VAR SPECIES>">Delete your data</a></li>
+
+					<li><a href="/AM/SelectArchive.cgi?species=<TMPL_VAR SPECIES>">Archive your data</a></li>
+
+					<li><a href="/AM/SelectRestore.cgi?species=<TMPL_VAR SPECIES>">Restore archived data</a></li>
+				</ul>
+			</div>
+			<div class="card">
+				<div class="new-heading">Change species</div>
+				<!--<div class="il-grid">
+					<TMPL_UNLESS EXPR="SPECIES eq 'human'"><a href="/AutozygosityMapper/index.html"><figure class="ta-c"><img src="/AutozygosityMapper/Human_small.png" height="60"><figcaption>Homo sapiens</figcaption></figure></a></TMPL_UNLESS>
+					<TMPL_UNLESS EXPR="SPECIES eq 'dog'"><a href="/AutozygosityMapper/dog/index.html"><figure class="ta-c"><img src="/AutozygosityMapper/dog/Pictogram_Dog.png" height="60"><figcaption>Canis lupus</figcaption></figure></a></TMPL_UNLESS>
+					<TMPL_UNLESS EXPR="SPECIES eq 'rat'"><a href="/AutozygosityMapper/rat/index.html"><figure class="ta-c"><img src="/AutozygosityMapper/rat/rat.jpg" height="60"><figcaption>Rattus norvegicus</figcaption></figure></a></TMPL_UNLESS>
+					<TMPL_UNLESS EXPR="SPECIES eq 'cow'"><a href="/AutozygosityMapper/cow/index.html"><figure class="ta-c"><img src="/AutozygosityMapper/cow/Cow_bw_06.png" height="60"><figcaption>Bos taurus</figcaption></figure></a></TMPL_UNLESS>
+					<TMPL_UNLESS EXPR="SPECIES eq 'mouse'"><a href="/AutozygosityMapper/mouse/index.html"><figure class="ta-c"><img src="/AutozygosityMapper/mouse/Input-mouse.png" height="60"><figcaption>Mus musculus</figcaption></figure></a></TMPL_UNLESS>
+					<TMPL_UNLESS EXPR="SPECIES eq 'horse'"><a href="/AutozygosityMapper/horse/index.html"><figure class="ta-c"><img src="/AutozygosityMapper/horse/Horse_Rider_icon.png" height="60"><figcaption>Equus caballus</figcaption></figure></a></TMPL_UNLESS>
+					<TMPL_UNLESS EXPR="SPECIES eq 'sheep'"><a href="/AutozygosityMapper/sheep/index.html"><figure class="ta-c"><img src="/AutozygosityMapper/sheep/Sheep_in_gray.png" height="60"><figcaption>Ovis aries</figcaption></figure></a></TMPL_UNLESS>
+				</div>-->
+				<select class="species-select" onchange="window.location.href=this.value">
+					<option value="/AutozygosityMapper/index.html" <TMPL_IF EXPR="SPECIES eq 'human'">selected</TMPL_IF>>Humans (Homo sapiens)</option>
+					<option value="/AutozygosityMapper/cow/index.html" <TMPL_IF EXPR="SPECIES eq 'cow'">selected</TMPL_IF>>Cattle (Bos taurus)</option>
+					<option value="/AutozygosityMapper/dog/index.html" <TMPL_IF EXPR="SPECIES eq 'dog'">selected</TMPL_IF>>Dogs (Canis lupus)</option>
+					<option value="/AutozygosityMapper/horse/index.html" <TMPL_IF EXPR="SPECIES eq 'horse'">selected</TMPL_IF>>Horses (Equus caballus)<optioni>
+					<option value="/AutozygosityMapper/mouse/index.html" <TMPL_IF EXPR="SPECIES eq 'mouse'">selected</TMPL_IF>>Mice (Mus musculus)</option>
+					<option value="/AutozygosityMapper/rat/index.html" <TMPL_IF EXPR="SPECIES eq 'rat'">selected</TMPL_IF>>Rats (Rattus norvegicus)</option>
+					<option value="/AutozygosityMapper/sheep/index.html" <TMPL_IF EXPR="SPECIES eq 'sheep'">selected</TMPL_IF>>Sheep (Ovis aries)</option>
+				</select>
+			</div>
+			<!--<div class="card bold">
+				<div class="new-heading">&nbsp;</div>
+				<p>
+					Please refer to the <a href="changes.html" target="_blank">changes document</A>
+					to see differences to HomozygosityMapper.
+					The old version can be accessed at <a href="/HomozygosityMapper/"
+						target="_blank">http://www.homozygositymapper.org/</A>.<br>
+					Data created without being logged in will automatically be deleted after 3 weeks.
+				</p>
+			</div>-->
+		</div>
+	</div>
+
+</body>
+
+</html>

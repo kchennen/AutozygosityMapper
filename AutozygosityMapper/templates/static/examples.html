@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+  <TMPL_INCLUDE _header_footer.tmpl />
+
+  <div class="outwrapper main prel anchor-examples">
+    <div>
+      <p>With permission of the authors (thank you very much!), we provide examples of successful mappings with
+        AutozygosityMapper using Affymetrix 10K, 50K, or 250K arrays in which the disease gene (or, in one case,
+        a disease-linked region) could be identified. In some of them, our software (HomozygosityMapper) was employed before or
+        parallel to conventional linkage, in others retrospectively as a proof of principle.  <br>
+        Please note that for gene identification usually further investigations (such as genotyping of
+        microsatellite markers) were performed. The additional information is not included here so the published
+        regions may have eventually become much smaller than in the original analysis where only SNP genotypes had
+        been at hand.</p>
+<p class="bold">Please note that AutozygosityMapper is optimised for VCF files - you should use HomozygosityMapper when working with SNP array data!</P>		
+		
+      <p>We encourage every researcher who uses this website to map a gene to make her or his data public. If you
+        write an e-mail, we will list your publication here and provide a direct link to the genotypes and
+        results. <br>
+        <br>
+        The title always links directly to the mapping, the journal to the PubMed abstract.<br>
+      </p>
+      <ul>
+        <li>
+          <p><a href="/AM/ShowRegion.cgi?analysis_no=264" target="_blank"><strong>RAB23 mutations in Carpenter
+                syndrome imply an unexpected role for hedgehog signaling in cranial-suture development and
+                obesity.</strong></a><br>
+            Jenkins D, Seelow D, Jehee FS, Perlyn CA, Alonso LG, Bueno DF, Donnai D, Josifova D, Mathijssen IM, Morton
+            JE, Orstavik KH, Sweeney E, Wall SA, Marsh JL, Nurnberg P, Passos-Bueno MR, Wilkie AO.<br>
+            <a href="http://www.ncbi.nlm.nih.gov/pubmed/17503333" target="_blank">Am J Hum Genet. 2007
+              Jun;80(6):1162-70. </a> <br>
+            <span class="note">50K data. Disease gene: RAB23, chromosome 6, 57.2 Mbp<br>
+              Note the heterozygous genotypes in the middle of the target interval. AutozygosityMapper ignores such
+              obvious genotyping errors. </span>
+          </p>
+		
+        </li>
+        <li>
+          <p><a href="/AM/ShowRegion.cgi?analysis_no=367" target="_blank"><strong>Mutations in the tight-junction
+                gene claudin 19 (CLDN19) are associated with renal magnesium wasting, renal failure, and severe ocular
+                involvement.</strong></a><br>
+            Konrad M, Schaller A, Seelow D, Pandey AV, Waldegger S, Lesslauer A, Vitzthum H, Suzuki Y, Luk JM, Becker
+            C, Schlingmann KP, Schmid M, Rodriguez-Soriano J, Ariceta G, Cano F, Enriquez R, Juppner H, Bakkaloglu SA,
+            Hediger MA, Gallati S, Neuhauss SC, Nurnberg P, Weber S.<br>
+            <a href="http://www.ncbi.nlm.nih.gov/pubmed/17033971" target="_blank">Am J Hum Genet. 2006
+              Nov;79(5):949-57. </a> <br>
+            <span class="note">50K data. Disease gene: CLDN19, chromosome 1, 43.0 Mbp </span>
+          </p>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>

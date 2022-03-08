@@ -1,0 +1,65 @@
+<div class="outwrapper">
+  <div class="flex jc-sb ai-c">
+    <a class="flex ai-c" href="/AutozygosityMapper/<TMPL_IF species><TMPL_VAR species />/</TMPL_IF>index.html">
+      <img src="/AutozygosityMapper/am_logo.svg" alt="HomozgosityMapper pedigree" height="130">
+      <img src="/AutozygosityMapper/am_text.svg" height="65" class="pad-logo">
+    </a>
+    <TMPL_UNLESS NO_HEAD_LOGIN>
+    <TMPL_IF EXPR="USER_LOGIN eq 'guest'">
+      <a href="/AM/login_form.cgi?species=<TMPL_IF species><TMPL_VAR species /><TMPL_ELSE>human</TMPL_IF>">Login</a>
+      <TMPL_ELSE>
+        <div>
+          <span>Logged in as:<br>
+            <i>
+              <TMPL_VAR USER_LOGIN />
+            </i>
+          </span>
+        </div>
+        <a href="/AM/logout.cgi">Log out</a>
+    </TMPL_IF>
+  </TMPL_UNLESS>
+    <img src="/AutozygosityMapper/<TMPL_VAR ICON>" width="95">
+  </div>
+</div>
+<div class="outwrapper main prel">
+  <h1>
+    <TMPL_VAR TITLE>
+  </h1>
+</div>
+
+
+<div class="filler-bottom"></div>
+<footer>
+  <div class="fleft">
+    <TMPL_IF IS_INDEX>
+      <p><b>AutozygosityMapper is the 2022 update of <a target="_blank"
+            href="https://www.homozygositymapper.org/">HomozygosityMapper</a>.</b> To see a list of changes, please
+        refer to
+        the <a href="/AutozygosityMapper/changes.html">changelog</a>. If you use AutozygosityMapper, please cite our publications:
+        <a target="_blank" href="https://academic.oup.com/nar/article/40/W1/W516/1077648">2012</a>,
+        <a target="_blank" href="https://academic.oup.com/nar/article/37/suppl_2/W593/1140995">2009</a>
+      </p>
+      <p>AutozygosityMapper was developed by a dedicated <a href="/AutozygosityMapper/documentation.html#team">team</a> at the
+        <a
+          href="https://www.bihealth.org/en/research/research-group/seelow-lab-bioinformatics-and-translational-genetics">Berlin
+          Institute of Health</a> and it is free and open to all users.
+      </p>
+    </TMPL_IF>
+  </div>
+  <div class="fright">
+    <TMPL_IF IS_INDEX>
+      <a href="/AutozygosityMapper/examples.html">Examples</a>
+    </TMPL_IF>
+    <TMPL_IF EXPR="IS_INDEX or help_tag">
+      <a href="/AutozygosityMapper/documentation.html<TMPL_VAR help_tag>">Documentation</a>
+    </TMPL_IF>
+    <TMPL_IF EXPR="IS_INDEX or tutorial_tag">
+      <a href="/AutozygosityMapper/tutorial.html<TMPL_VAR tutorial_tag>">Tutorial</a>
+    </TMPL_IF>
+    <TMPL_IF IS_INDEX>
+      <a href="https://teufelsberg.charite.de/Impressum.html">Imprint/data protection</a>
+    <TMPL_ELSE>
+      <a href="/AutozygosityMapper/<TMPL_VAR SPECIES>/index.html">Homepage</a>
+    </TMPL_IF>
+  </div>
+</footer>

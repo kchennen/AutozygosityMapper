@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+  <TMPL_INCLUDE _header_footer.tmpl />
+
+  <div class="outwrapper main prel anchor-docss">
+    <p>This tutorial is as brief as possible, if you are interested in more detailed information or in the
+      implementation, please consult the <a href="documentation.html" target="_blank">documentation</a> or the
+      <a href="technical_documentation.html" target="_blank">technical documentation</a>, respectively. Unless
+      mentioned here, there is no need to change any settings on the interfaces.
+    </p>
+    <p>Please note that projects created without a personal account can be deleted by anyone unless you decide
+      to make them private. In this case, you
+      will have to use special URLs to work with your data. In any case, we delete data uploaded as guest (i.e.
+      without a login) periodically
+      (they are kept for at least 2 months).
+      If you want to work with real data, you should hence consider to
+      <a href="/AutozygosityMapper/CreateProfile.html" target="_blank">create a personal account</a>.
+    </p>
+    <p>If you are only interested in the output of AutozygosityMapper, you don't have to upload genotypes
+      first.
+      Simply open the <a href="/AM/ChooseProject.cgi" target="_blank">query projects</a> page and select
+      one of the existing public projects and move to <a href="#queryprojects">section 3</a> of this tutorial.
+      The sample files used in this tutorial are also there, under the intuitive names 'VCF-Tutorial_Carpenter',
+      or 'Tutorial_SNP', respectively. Click
+      <a href="/AM/ShowRegion.cgi?analysis_no=107&species=human" target="_blank">here for VCF genotypes</a>,
+      <a href="/AM/ShowRegion.cgi?analysis_no=152&species=human" target="_blank"> here for the Autozygosity
+        analysis for VCF genotypes</a> or
+      <a href="/AM/ShowRegion.cgi?analysis_no=103&species=human" target="_blank">here for SNP chip
+        genotypes</a>
+      to access the project directly and continue with <a href="#genomewidehomozygosity">section 4</a>.
+    </p>
+
+    <div class="headingrow">
+      <div class="flex jc-sb">
+        <div class="heading">Contents</div>
+      </div>
+    </div>
+    <p></p>
+    <ol class="multi-col">
+      <li><a href="#upload">Upload genotypes</a></li>
+        <li><a href="#analysis">Analyse your genotypes</a></li>
+        <li><a href="#queryprojects">Query a project</a></li>
+        <li><a href="#genomewidehomozygosity">Genome-wide homozygosity</a></li>
+        <li><a href="#chromosomehomozygosity">Chromosomal homozygosity</a></li>
+        <li><a href="#genotypesview">Genotypes view</a></li>
+        <li><a href="#mutationdistiller">Export of homozygous regions as VCF file and identification of pathogenic DNA variants</a></li>
+        <li><a href="#delete">Remove projects or analysis</a></li>
+        <li><a href="#account">Create a personal account</a></li>
+    </ol>
+    
+
+    <div class="headingrow"><a name="upload"></a>
+      <div class="flex jc-sb">
+        <div class="heading">1. Upload genotypes</div>
+      </div>
+    </div>
+
+    <p>First, you must upload genotypes. Please open the <a href="/AM/UploadSettings.cgi" target="_blank">upload
+        page</a>.
+    <h4>NGS genotypes (VCF)</h4>
+
+    <p>For this tutorial, a sample VCF (variant call format) file (with a homozygous region on
+      chromosome 6) exist - download it <a
+        href="/downloads/AutozygosityMapper/VCF_Sample_File_HG00377_Carp.vcf.gz">here</a>.</p>
+    <ol>
+      <li>Under <span class="HTML_element">new project name</span>, choose a unique project name ('test'
+        is
+        already in use!). This name must <b>not</b> contain any non-alphanumeric characters; only letters,
+        digits
+        and underscores are allowed.</li>
+      <li>Select <span class="HTML_element">VCF file</span> at 'genotypes from'.</li>
+      <li>Under <span class="HTML_element">genotype file</span>, select the file you want to upload (i.e.
+        <a href="/downloads/AutozygosityMapper/VCF_Sample_File_HG00377_Carp.vcf.gz">this file</a>).
+      </li>
+      <li>Click on <span class="HTML_element">submit</span> and have a cup of tea (or a pint of beer,
+        respectively)
+        - the upload will take about two minutes. You can watch the process in the browser (if no coffee
+        or beer
+        is available). </li>
+      <li>When the upload is complete, click on the link 'Analyse your genotypes'.</li>
+    </ol>
+
+    <h4>SNP genotypes</h4>
+
+    <p>For this tutorial, sample genotypes (with a homozygous region on
+      chromosome 7) exist - download them <a href="/downloads/AutozygosityMapper/SNP_Sample_File.zip">here</a>. </p>
+    <ol>
+      <li>Under <span class="HTML_element">new project name</span>, choose a unique project name ('test'
+        is
+        already in use!). This name must <b>not</b> contain any non-alphanumeric characters; only letters,
+        digits
+        and underscores are allowed.</li>
+      <li>Select <span class="HTML_element">SNP chip</span> at 'genotypes from' and set <span
+          class="HTML_element">choose SNP chip</span> to 'Affymetrix 50K Hind240'.</li>
+      <li>Under <span class="HTML_element">genotype file</span>, select the file you want to upload (i.e.
+        <a href="/downloads/AutozygosityMapper/SNP_Sample_File.zip">this file</a>).
+      </li>
+      <li>Click on <span class="HTML_element">submit</span> and have a cup of tea (or a pint of beer,
+        respectively)
+        - the upload will take about two minutes. You can watch the process in the browser (if no coffee
+        or beer
+        is available). </li>
+      <li>When the upload is complete, click on the link 'Analyse your genotypes'.</li>
+    </ol>
+
+    <p><b>Don't check the <span class="HTML_element">access restriction</span> button unless you work with a
+        personal account.</b></p>
+    Please <a href="#delete">delete</a> your genotypes when you've finished the tutorial.
+
+
+    <div class="headingrow"><a name="analysis"></a>
+      <div class="flex jc-sb">
+        <div class="heading">2. Analyse your genotypes</div>
+      </div>
+    </div>
+
+    <p>Open the <a href="/AM/AnalysisSettings.cgi" target="_blank">analysis page</a> (unless it's already
+      open). </p>
+    <h4>NGS genotypes (VCF)</h4>
+
+    <ol>
+      <li>Select your project under <span class="HTML_element">project</span> (if you followed the link
+        after the
+        upload it should already be selected) or
+        <A HREF="/AM/AnalysisSettings.cgi?species=human&project_no=61" target="_blank">click here</A>
+        to use the sample genotypes already in the database.
+
+      <li>Under <span class="HTML_element">analysis name</span>, give your analysis a name (again, 'test'
+        is not a good choice).</li>
+      <li>In the <span class="HTML_element">analysis description</span> field, enter some text explaining
+        the analysis to you and, maybe, others. </li>
+      <li>Enter the affected samples from your file under <span class="HTML_element">cases</span>:
+        Sample1, Sample2</li>
+      <li>Enter the unaffected samples under <span class="HTML_element">controls</span>: Sample3, Sample4
+      </li>
+      <li>Click on <span class="HTML_element">submit</span> and watch the screen - sadly, one minute won't
+        be enough for another coffee or beer.</li>
+      <li>When the analysis is accomplished, click on the 'Show results' link. </li>
+    </ol>
+
+
+    <h4>NGS genotypes (VCF) - Autozygosity</h4>
+
+    <ol>
+      <li>Select your project under <span class="HTML_element">project</span> (if you followed the link
+        after the
+        upload it should already be selected) or
+        <A HREF="/AM/AnalysisSettings.cgi?species=human&project_no=61" target="_blank">click here</A>
+        to use the sample genotypes already in the database.
+
+      <li>Under <span class="HTML_element">analysis name</span>, give your analysis a name (again, 'test'
+        is not a good choice).</li>
+      <li>In the <span class="HTML_element">analysis description</span> field, enter some text explaining
+        the analysis to you and, maybe, others. </li>
+      <li>Enter the affected samples from your file under <span class="HTML_element">cases</span>:
+        Sample1, Sample2</li>
+      <li>Enter the unaffected samples under <span class="HTML_element">controls</span>: Sample3, Sample4
+      </li>
+      <li>Check the "require autozygosity" checkbox to restrict the detected regions to those with
+        affected individuals that are autozygous in the disease-linked region.</li>
+      <li>Click on <span class="HTML_element">submit</span> and watch the screen - sadly, one minute won't
+        be enough for another coffee or beer.</li>
+      <li>When the analysis is accomplished, click on the 'Show results' link. </li>
+    </ol>
+
+
+    <h4>SNP genotypes</h4>
+
+    <ol>
+      <li>Select your project under <span class="HTML_element">project</span> (if you followed the link
+        after the
+        upload it should already be selected) or <A HREF="/AM/AnalysisSettings.cgi?species=human&project_no=58"
+          target="_blank">click here</A>
+        to use the sample genotypes already in the database.
+
+      <li>Under <span class="HTML_element">analysis name</span>, give your analysis a name (again, 'test'
+        is not a good choice).</li>
+      <li>In the <span class="HTML_element">analysis description</span> field, enter some text explaining
+        the analysis to you and, maybe, others. </li>
+      <li>Enter the affected samples from your file under <span class="HTML_element">cases</span>:
+        NA07019,
+        NA06993,
+        NA07034,
+        NA07056,
+        NA07357</li>
+      <li>Enter the unaffected samples under <span class="HTML_element">controls</span>: NA10835,
+        NA10846,
+        NA10854</li>
+      <li>Set the minimum numbers of variants to 16.</li>
+      <li>Click on <span class="HTML_element">submit</span> and watch the screen - 30 seconds won't be
+        enough for another coffee or beer.</li>
+      <li>When the analysis is accomplished, click on the 'Show results' link. </li>
+    </ol>
+    </td>
+
+    <div class="headingrow"><a name="queryprojects"></a>
+      <div class="flex jc-sb">
+        <div class="heading">3. Query a project</div>
+      </div>
+    </div>
+
+    <p>Open the <a href="/AM/ChooseProject.cgi" target="_blank">query projects</a> page (unless it's already
+      open) or
+      click <a href="/AM/ShowRegion.cgi?analysis_no=107&species=human" target="_blank">
+        here for VCF genotypes</a>, <a href="/AM/ShowRegion.cgi?analysis_no=152&species=human" target="_blank"> here
+        for the Autozygosity analysis for VCF genotypes</a> or <a
+        href="/AM/ShowRegion.cgi?analysis_no=103&species=human" target="_blank">
+        here for SNP chip genotypes</a> to access the sample data directly.</p>
+
+    <ol>
+      <li>Select your analysis in the list (if you followed the link after the analysis it should already be
+        selected). </li>
+      <li>Click on submit. </li>
+    </ol>
+
+    <div class="headingrow"><a name="genomewidehomozygosity"></a>
+      <div class="flex jc-sb">
+        <div class="heading">4. Genome-wide homozygosity</div>
+      </div>
+    </div>
+
+    <p>After selecting the respective analysis, the homozygosity scores will be displayed as a genome-wide bar
+      chart. Scores higher than
+      60% of the maximum score will be displayed as red bars to highlight them. Below the bar chart,
+      all scores above 60% of the
+      maximum are listed (sorted by their score) and direct links to these regions are provided. On top of this
+      table, 'broad' regions are
+      displayed - in these, smaller decreases of the score within a homozygous region are neglected. At the
+      bottom of the table, 'narrow'
+      regions with sharp limits follow. If you expect some degree of heterozygosity, you should consider the
+      'broad' regions. </p>
+    Below the regions, links to GeneDistiller
+    and export options are displayed:<br>
+    <ul>
+      <li>With <A HREF="http://www.genedistiller.org/index2.html" target="_blank">GeneDistiller</A>,
+        candidate genes in all long homozygous regions can be queried at once.</li>
+      <li>For the enrichment needed for
+        deep sequencing approaches, AutozygosityMapper can produce *.bed files
+        containing either all regions or the complete genes/only the exons contained
+        within them. </li>
+		<li> Export of a VCF file containing all the variants in the regions above threshold.</li>
+		<li> Analyse add “With “MutationDistiller”-link candidate variant in all homozygous regions can be queried at once”
+    </ul>
+    <ol>
+      <li>Move the mouse pointer on the highest score in the bar chart (on chromosome 6 with the sample vcf
+        genotypes) and left-click. </li>
+    </ol>
+    <p><i>Click <a href="/AM/ShowRegion.cgi?analysis_no=107&species=human" target="_blank">
+          here for VCF genotypes</a>, <a href="/AM/ShowRegion.cgi?analysis_no=152&species=human" target="_blank"> here
+          for the Autozygosity analysis for VCF genotypes</a> or <a
+          href="/AM/ShowRegion.cgi?analysis_no=103&species=human" target="_blank">
+          here for SNP genotypes</a> to access the sample data directly.</i></p>
+
+    <div class="headingrow"><a name="chromosomehomozygosity"></a>
+      <div class="flex jc-sb">
+        <div class="heading">5. Chromosomal homozygosity</div>
+      </div>
+    </div>
+
+    <p>After clicking on a chromosome, the view is reduced to this chromosome. In our sample project, you can
+      clearly see a relatively
+      wide and high homozygosity score and, above this, in the small observed/expected ratio a clear surplus of
+      homozygous genotypes
+      (only red bars on top of the baseline). You can further zoom into the region by</p>
+    <ol>
+      <li>Left-click on a position left of the homozygous region.</li>
+      <li>Left-click on a position right of the homozygous region.</li>
+      <li>In box that now opens, click on 'zoom in'.</li>
+      <li>Now it's time to take a look at the underlying genotypes. Click on the first 'genotypes' link in the
+        table below the bar chart. </li>
+    </ol>
+
+    <div class="headingrow"><a name="genotypesview"></a>
+      <div class="flex jc-sb">
+        <div class="heading">6. Genotypes view</div>
+      </div>
+    </div>
+    <p>In this view, the single genotypes within your selected region are shown as colour-coded boxes. Each
+      column stands for a SNP
+      (sorted from left to right by its position), each line for a sample. Note that affected individuals are
+      displayed on top and controls
+      at the bottom, with a small free space between them. A grey box stands for an unknown genotype, blue for
+      heterozygosity and different
+      shades of red reflect the length of the homozygous strech if a genotype is homozygous. Genotypes
+      homozygous for the minor allele
+      (based on this study!) have a black diagonal line. A box is drawn around the homozygous region and the
+      limiting markers are displayed below the genotypes. Further below, a link to our candidate gene database,
+      <a href="http://www.genedistiller.org" target="_blank">GeneDistiller</a>, is included. If you want to
+      search for a candidate gene within your region, simply click on <span class="HTML_element">GeneDistiller</span>.
+      If you want to change the region, follow the instructions
+      below.
+    </p>
+    <ol>
+      <li>Left-click on the first SNP left of the homozygous region and select 'start' in the pop-up.</li>
+      <li>Left click on the first SNP right of the homozygous region and select 'end' in the pop-up.</li>
+      <li>Now click on the <span class="HTML_element">GeneDistiller</span> button.</li>
+    </ol>
+    <p>The GeneDistiller start page will now open with your limiting markers filled in as limits. To learn about
+      the functions of GeneDistiller, either play around (it's quite intuitive) or read its <a
+        href="http://www.genedistiller.org/info/index.html" target="_blank">manual</a>.</p>
+<p>If you want to search for a causal variant directly, simply click on “Mutationdistiller” (only possible for VCF genotypes, not for SNP arrays). </P>
+    <div class="headingrow"><a name="mutationdistiller"></a>
+      <div class="flex jc-sb">
+        <div class="heading">7. Search for causal variants</div>
+      </div>
+    </div>
+
+    <p>A page will now open, which provides an overview about the amount of variants within your selected region and how these variants were rated by the MutationTaster. Further information about these variants are shown by clicking on “Display”-link in the Results section and can be downloaded in tsv format (“Download TSV”-link).
+
+      Click here see the results of the <A style="text-align: left"
+        href="http://www.mutationdistiller.org/MD/MDresults.cgi?expression_rna=1&show_all_aae_1=0&expression_display=1&expression_adult=1&show_all_aae_2=0&expression_filter=1&genes_limit=10&variants=29990_663126&debug=0&show_maestro=0&mgd_full=0&show_exons=0&comphet_extra=0&show_genbank=0&phenotype=&genefunction="
+        target="_blank">MutationTaster/MutationDistiller analysis
+
+      </A>. You can change the search settings <A
+        href="https://www.mutationdistiller.org/MD/API.cgi?variants=29990_663126" target="_blank">here</A>.
+
+    </p>
+		
+			<P><IMG class="docu-img" src="doc/MutationTaster_results.png" alt="chomosomal homozygosity - zoom in" ></P>
+			
+			<p>Click the “Open MutationDistiller”-link to search for potential disease mutations.</P>
+
+			<P><IMG class="docu-img" src="doc/MutationDistiller_start.png" alt="chomosomal homozygosity - zoom in" ></P>
+			<p>You could now give phenotypic information or select virtual panels from GEL PanelApp but you can also click on submit to
+			analyse all variants...:</p>
+			<P><IMG class="docu-img" src="doc/MutationDistiller_results.png" alt="chomosomal homozygosity - zoom in" ></P>
+	
+
+    <div class="headingrow"><a name="delete"></a>
+      <div class="flex jc-sb">
+        <div class="heading">8. Remove projects or analysis</div>
+      </div>
+    </div>
+
+    <p>Go to the <a href="/AM/SelectDelete.cgi" target="_blank">delete your data</a> page. All proejcts and
+      analyses owned by you will be displayed.</p>
+    <ol>
+      <li>Select an analysis or project you want to delete. </li>
+      <li>Click on the
+        Delete selected projects and/or analyses button. </li>
+      <li>On the page that now opens, click on the Confirm button. </li>
+    </ol>
+
+    <h2 style="color: blue">Congratulations!</h2>
+    <p>You have now completed the tutorial. If you want to analyse 'real' genotypes and want to hide them from
+      the world (and make them public when your manuscript has been accepted), you should <a
+        href="/AutozygosityMapper/CreateProfile.html" target="_blank">create a personal account</a>. <br>
+    </p>
+
+    <div class="headingrow"><a name="account"></a>
+      <div class="flex jc-sb">
+        <div class="heading">9. Create a personal account</div>
+      </div>
+    </div>
+
+    <p>Go to the <a href="/AutozygosityMapper/CreateProfile.html" target="_blank">create profile</a> page and
+      enter your name, an e-mail address,
+      your organisation and select your login name and a password. You will be logged in automatically (your
+      browser must accept cookies for this function).
+      More about the publication and the exchange of your data can be found in the <a href="documentation.html"
+        target="_blank">documentation</a>. <br>
+      <b>You can use every function of AutozygosityMapper, except for sharing data, without a login.</b>
+    </p>
+    <br>
+    <br><br>
+    <p>This tutorial is meant only as a brief introduction to AutozygosityMapper. Please read the <a
+        href="documentation.html" target="_blank">documentation</a> if you are interested in the elements not
+      mentioned here. And if any questions remain unanswered, don't hesitate to ask us (e-mail to dominik.seelow
+      (at) charite.de). We would also appreciate hearing of your experiences, bugs you discovered, and
+      suggestions to improve this application.</p>
+  </div>
+</body>
+
+</html>

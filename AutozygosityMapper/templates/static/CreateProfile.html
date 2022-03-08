@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+  <TMPL_INCLUDE _header_footer.tmpl />
+
+  <div class="outwrapper main prel page-std-form">
+    <form action="/AM//CreateProfile.cgi" method="post">
+      <div class="grid">
+        <div>Login</div>
+        <div><input name="user_login" type="text" size="20" maxlength="20"></div>
+        <div>Password </div>
+        <div><input name="user_password" type="password" size="20" maxlength="20"></div>
+        <div>Full name </div>
+        <div><input name="user_name" type="text" size="20" maxlength="20"></div>
+        <div>Organisation </div>
+        <div><input name="organisation" type="text" size="40" maxlength="200"></div>
+        <div>Email </div>
+        <div><input name="user_email" type="text" size="40" maxlength="200"><br>
+          <small>Lost passwords will only be sent to the email address entered here.</small>
+        </div>
+      </div>
+
+      <div><button type="submit" name="Submit">Submit</button>
+      </div>
+      <div>
+        All fields are mandatory.       
+      </div>
+    </form>
+  </div>
+</body>
+</html>

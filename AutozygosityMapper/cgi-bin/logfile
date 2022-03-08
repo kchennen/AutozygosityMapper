@@ -1,0 +1,24 @@
+2021-01-26 16:04:11.318 GMT [199907] LOG:  invalid value for parameter "max_stack_depth": 10240
+2021-01-26 16:04:11.318 GMT [199907] DETAIL:  "max_stack_depth" must not exceed 7680kB.
+2021-01-26 16:04:11.318 GMT [199907] HINT:  Increase the platform's stack depth limit via "ulimit -s" or local equivalent.
+2021-01-26 11:04:11.318 EST [199907] FATAL:  configuration file "/raid/postgres/postgresql.conf" contains errors
+2021-01-26 16:04:28.673 GMT [199915] LOG:  invalid value for parameter "max_stack_depth": 10240
+2021-01-26 16:04:28.673 GMT [199915] DETAIL:  "max_stack_depth" must not exceed 7680kB.
+2021-01-26 16:04:28.673 GMT [199915] HINT:  Increase the platform's stack depth limit via "ulimit -s" or local equivalent.
+2021-01-26 11:04:28.673 EST [199915] FATAL:  configuration file "/raid/postgres/postgresql.conf" contains errors
+2021-01-26 16:04:55.098 GMT [199920] LOG:  invalid value for parameter "max_stack_depth": 10240
+2021-01-26 16:04:55.098 GMT [199920] DETAIL:  "max_stack_depth" must not exceed 7680kB.
+2021-01-26 16:04:55.098 GMT [199920] HINT:  Increase the platform's stack depth limit via "ulimit -s" or local equivalent.
+2021-01-26 11:04:55.099 EST [199920] FATAL:  configuration file "/raid/postgres/postgresql.conf" contains errors
+2021-01-26 11:06:29.719 EST [199934] LOG:  starting PostgreSQL 12.5 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.3.1 20191121 (Red Hat 8.3.1-5), 64-bit
+2021-01-26 11:06:29.719 EST [199934] LOG:  listening on IPv4 address "141.42.206.219", port 5432
+2021-01-26 11:06:29.720 EST [199934] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2021-01-26 11:06:29.721 EST [199934] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-26 11:06:29.741 EST [199934] LOG:  redirecting log output to logging collector process
+2021-01-26 11:06:29.741 EST [199934] HINT:  Future log output will appear in directory "log".
+2021-01-26 11:09:58.133 EST [199951] LOG:  starting PostgreSQL 12.5 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.3.1 20191121 (Red Hat 8.3.1-5), 64-bit
+2021-01-26 11:09:58.133 EST [199951] LOG:  listening on IPv4 address "141.42.206.219", port 5432
+2021-01-26 11:09:58.134 EST [199951] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2021-01-26 11:09:58.134 EST [199951] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-01-26 11:09:59.497 EST [199951] LOG:  redirecting log output to logging collector process
+2021-01-26 11:09:59.497 EST [199951] HINT:  Future log output will appear in directory "log".

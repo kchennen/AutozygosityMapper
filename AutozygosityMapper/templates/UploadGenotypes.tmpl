@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+  <TMPL_INCLUDE _header_footer.tmpl />
+
+  <div class="outwrapper main prel anchor-upload-genotypes page-std-form">
+    <form action="/AM/UploadGenotypes.cgi" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="species" value="<TMPL_VAR NAME=species>" />
+      <div class="grid">
+        <div class="shift-dn">New project name </div>
+        <div>
+          <input name="project_name" type="text" size="40" maxlength="40" required>
+          <small>
+            Must <b>not</b> contain any characters except letters, digits, underscores - spaces are <b>not</b>
+            allowed
+          </small>
+        </div>
+        <div>Access restriction</div>
+
+        <div>
+          <div class="toggle-outer">
+            <span>No</span>
+            <div class="toggle greyred">
+              <input name="access_restricted" type="checkbox" value="1" <TMPL_IF EXPR="USER_LOGIN ne 'guest'">checked
+              </TMPL_IF>>
+              <div class="indicator"></div>
+            </div>
+            <span class="pl12">Yes</span>
+          </div>
+          <TMPL_IF EXPR="USER_LOGIN eq 'guest'">
+            <small class="red">
+              <ul>
+                <li>
+                  With access restriction active, a secret key for data access will be issued during the upload
+                  process. There is <b>absolutely no way</b> for you to retrieve your data without this key.
+                </li>
+                <li>Without access restriction, anyone will be able to view and delete your data.</li>
+              </ul>
+            </small>
+          </TMPL_IF>
+        </div>
+        <div>Genotypes from</div>
+        <div class="toggle-outer">
+          <span>VCF file</span>
+          <div class="toggle greygrey">
+            <input id="cb-is-array" type="checkbox" onchange="toggle_vcf_array()">
+            <div class="indicator"></div>
+          </div>
+          <span>SNP chip</span>
+        </div>
+
+        <div class="array-only dnone">Choose SNP chip</div>
+        <div class="array-only dnone">
+          <select name="chip_no">
+            <TMPL_VAR NAME=chips>
+          </select>
+        </div>
+        <div class="shift-dn">Genotype file</div>
+        <div>
+          <div class="il-flex dualinp prel">
+            <input disabled="" type="text" name="prettyfilename" id="prettyfilename" class="f-g1 end-input"
+              placeholder="Please zip or gzip large files before upload" size="40">
+            <button type="button" class="prel" onclick="document.getElementById('filename').click();">
+              <span id="upload-button-text">Choose SNP chip</span>
+              <svg class="svgico svg-l svg-dark" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                width="24">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"></path>
+              </svg>
+            </button>
+          </div>
+          <input class="dnone" name="snp_or_vcf_file" type="file" size="40" id="filename"
+            onchange="document.getElementById('prettyfilename').value = this.files[0].name;">
+          <small class="array-only dnone">
+            <A href="https://teufelsberg.charite.de/AutozygosityMapper/SampleGenotypesTutorial.zip">
+              Sample file (Affy Mapping50K_Hind240)
+            </A>
+          </small>
+          <small class="vcf-only dnone">
+            <A href="https://teufelsberg.charite.de/downloads/AutozygosityMapper/VCF_Sample_File_HG00377_Carp.vcf.gz">
+              Sample VCF file
+            </A>
+          </small>
+			 <small class="bold">
+			 AutozygosityMapper is primarily aimed at VCF files, we recommend using <A href="https://www.homozygositymapper.org/">HomozygosityMapper</A> instead.
+			 </small>
+          <small>
+            The filename must <b>not</b> contain any characters except letters, digits, &amp; underscores - spaces
+            are <b>not</b> allowed. This file must be plain text and can be zipped or gzipped -
+            <A HREF="/AutozygosityMapper/sample_files.html" target="_blank">
+              formats &amp; sample files</A>.
+          </small>
+          <small class="array-only dnone">
+            There is no standard format for SNP array genotypes - should you experience problems with your
+            file or miss the array in the drop-down menu, please send an email.
+          </small>
+        </div>
+
+        <div class="vcf-only dnone">Minimum coverage</div>
+        <div class="vcf-only dnone">
+          <INPUT type="hidden" name="vcf" value="VCF">
+          <INPUT TYPE="text" name="min_cov" size="10" maxlength="4" VALUE="<TMPL_VAR NAME=min_cov>">
+          <small>
+            Genotypes with a coverage below this value are neglected.</small>
+          <small>
+            You <b>must</b> set this value to 0 unless your VCF file has the
+            <A HREF="/AutozygosityMapper/sample_files.html#vcf" target="_blank">DP flag in the FORMAT(!) column.</A>
+          </small>
+        </div>
+			<div class="vcf-only dnone">Genome version</div>
+        <div class="vcf-only dnone">
+          <INPUT TYPE="text" name="genome_version" size="10" maxlength="4" VALUE="<TMPL_VAR NAME=genome_version>">
+          <small>
+            Enter the genome version you are using.</small>
+          <small>
+        </div>		  
+      </div>
+      <div class="grid extra">
+        <div class="gc-2">
+          <button type="submit" name="Submit">Submit</button>
+        </div>
+        <div class="gc-s2">
+          <small>
+            <ul>
+              <TMPL_IF EXPR="USER_LOGIN eq 'guest'">
+                <li>
+                  Due to storage limitations, data created as guest will be deleted from time to time (we keep the
+                  data at least for three weeks).
+                </li>
+                <li>
+                  You cannot use the homozygosity around a gene in GeneDistiller if your genotypes are private and
+                  you are not logged in.
+                </li>
+              </TMPL_IF>
+              <li>
+                Project and file names <B>must not</B> contain any other characters than letters, digits and _.
+              </li>
+              <li>
+                There is no size limit for uploads but very large files (&gt; 100 MB) are
+                likely to cause server time-outs unless the connection is very fast.
+                Please zip or gzip your files to accelerate data upload - especially files
+                larger than 10 MB.
+              </li>
+              <li>
+                If you experience network time-outs anyway, either split your file into smaller
+                parts or write us an e-mail - we will certainly find a solution to upload your data.
+              </li>
+              <li><B>Never</B> press reload after submitting (unless another page is displayed).</li>
+            </ul>
+          </small>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function toggle_vcf_array() {
+      var act = "array-only";
+      var dact = "vcf-only";
+      if (!document.getElementById("cb-is-array").checked) {
+        dact = [act, act = dact][0];  // Swap.
+        document.getElementsByName('vcf')[0].value = "VCF";
+        document.getElementById('upload-button-text').innerText = "Choose VCF file";
+        
+      } else {
+        document.getElementsByName('vcf')[0].value = "0";
+        document.getElementById('upload-button-text').innerText = "Choose SNP chip";
+      }
+      [].forEach.call(document.getElementsByClassName(act), function (el) { el.classList.remove("dnone"); });
+      [].forEach.call(document.getElementsByClassName(dact), function (el) { el.classList.add("dnone"); });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () { 
+      setTimeout(
+        function() {
+          toggle_vcf_array();
+          if (document.getElementById('filename').files.length)
+            document.getElementById('prettyfilename').value = 
+            document.getElementById('filename').files[0].name;
+        }, 0); 
+    });
+
+  </script>
+</body>
+
+</html>

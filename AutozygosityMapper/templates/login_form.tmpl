@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+  <TMPL_INCLUDE _header_footer.tmpl />
+
+  <div class="outwrapper main prel page-std-form">
+    <form action="/AM/login.cgi" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="species" value="<TMPL_VAR species>">
+      <div class="grid">
+        <div>User ID </div>
+        <div><input name="userid" size="40" maxlength="40" type="text"></div>
+
+        <div>Password</div>
+        <div><input type="password" size="40" maxlength="40" name="password"></div>
+      </div>
+      <div class="grid extra">
+        <div class="gc-s2">By submitting you accept a cookie which will store your login. The cookie is deleted
+          when you log off.
+        </div>
+        <div class="gc-2">
+          <button name="Submit" type="submit">Submit</button>
+          <a href="/AutozygosityMapper/lostPW.html">I forgot my credentials!</a>
+        </div>
+      </div>
+  </div>
+  </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+	<TMPL_INCLUDE _header_footer.tmpl />
+
+	<div class="outwrapper main prel anchor-changes">
+
+		<!--<div class="headingrow">
+			<div class="flex jc-sb">
+				<div class="heading">Notes</div>
+			</div>
+		</div>
+	
+		<p></p>-->
+		<ul>
+			<li>HomozygosityMapper will remain in service and <b>we recommend to use this tool for SNP array-based studies</b>.</li>
+			<li>User profiles created on www.homozygositymapper.org before 15 Dec 2020 were transferred. </li>
+			<li>Due to the changes, old HomozygosityMapper projects cannot be accessed from AutozygosityMapper.</li>
+			<li>The old version can still be used at <a href="https://www.homozygositymapper.org/">https://www.homozygositymapper.org/</A>.
+			</li>
+		</ul>
+
+		<div class="headingrow">
+			<div class="flex jc-sb">
+				<div class="heading">Sample workflow in AutozygosityMapper</div>
+			</div>
+		</div>
+		<p></p>
+
+		<p><img height="700" src="/AutozygosityMapper/AM_workflow.svg" style="margin: -20px 0 -150px -80px"></p>
+
+		<div class="headingrow">
+			<div class="flex jc-sb">
+				<div class="heading">New features in AutozygosityMapper</div>
+			</div>
+		</div>
+		<p></p>
+		<ul>
+			<li>Direct transfer to MutationDistiller to identify pathogenic variants (human)</li>
+			<li>Real genotypes are saved for NGS and SNP chip genotypes</li>
+			<li>Homozygous/autozygous blocks are now calculated using their physical length</li>
+			<li>Search for autozygosity (in addition to mere homozygosity)</li>
+			<li>Homozygous regions can be exported as VCF file for further analysis</li>
+			<li>New human Affymetrix SNP arrays: Axiom_Exome_1A, Axiom_Exome319, Axiom_GW_EAS, Axiom_GW_EUR,
+				Axiom_GW_HuOrigin, Axiom_GW_LAT, Axiom_GW_PanAFR</li>
+			<li>New non-human Affymetrix SNP arrays: Axiom_MouseHD
+			<li>Please note that support for SNP arrays in AutozygosityMapper is limited, we recommend using <a href="https://www.homozygositymapper.org/">HomozygosityMapper</A></li>
+			<li>New user interfaces</li>
+			<li>Direct display of chosen coordinates or genes</li>
+			<li>Clear separation between array and NGS data in the upload interface</li>
+			<li>Available sample IDs are now shown in the analysis interface</li>
+			<li>Email notification for logged-in users after successful upload / analysis</li>
+			<li>Automatic retrieval of lost login credentials by email</li>
+			<li><b>Much</b> faster analysis, especially for VCF files</li>
+			<li>Mandatory use of https</li>
+		</ul>
+
+		<div class="headingrow">
+			<div class="flex jc-sb">
+				<div class="heading">After the last HomozygosityMapper publication</div>
+			</div>
+		</div>
+		<p></p>
+		<ul>
+			<li>Data sharing: auto-completion for user accounts</li>
+		</ul>
+		
+		<div class="headingrow">
+			<div class="flex jc-sb">
+				<div class="heading">Removed functions</div>
+			</div>
+		</div>
+		<p></p>
+		<ul>
+			<li>Support for SNP arrays in AutozygosityMapper is limited, we recommend using <a href="https://www.homozygositymapper.org/">HomozygosityMapper</A></li>
+			<li>Display of homozygosity enrichment/depletion (was only possible for SNP chips and lead to confusion)</li>
+			<li>Display of allele frequencies in controls (was only possible for SNP chips and lead to confusion)</li>
+			<li>'Genetic hetereogeneity' analysis mode (slowed the application) - replaced by the new autozygosity mode</li>
+			<li>Support for Illumina arrays (temporarily, will be restored soon)</li>
+			<li>Adding of new genotypes to existing projects (drastically slowed the application)</li>
+			<li class="bold">Please contact us if one of these features was important for your work and you want it restored.
+			</li>
+		</ul>
+
+		<div class="headingrow">
+			<div class="flex jc-sb">
+				<div class="heading">Outlook</div>
+			</div>
+		</div>
+		<p></p>
+		<ul>
+			<li>We are working on making genome build GRCh38 available.</li>
+			<li>There is currently an issue with Illumina SNP arrays, we are woking on fixing it but recommend
+			<a href="https://www.homozygositymapper.org/">HomozygosityMapper</A> for SNP arrays anyway.</li>
+			<li>New feature: explicit search for variants without genotypes in the affected individuals to identify homozygous deletions</li>
+		</ul>
+		
+	</div>
+
+</body>
+
+</html>

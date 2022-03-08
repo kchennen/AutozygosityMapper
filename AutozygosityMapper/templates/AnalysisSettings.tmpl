@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+  <TMPL_INCLUDE _header_footer.tmpl />
+
+  <div class="outwrapper main prel anchor-analysis-settings page-std-form">
+    <form id="form1" action="/AM/Analyse.cgi" method="post" enctype="multipart/form-data" name="form1">
+      <input type="hidden" name="species" value="<TMPL_VAR NAME=species>">
+      <input type="hidden" name="unique_id" value="<TMPL_VAR NAME=unique_id>">
+      <div class="grid">
+        <div>Project</div>
+        <div><select name="project_no" onChange="ReAnalyse()">
+            <TMPL_VAR NAME=projects>
+          </select>
+        </div>
+
+        <div>Re-analyse</div>
+        <div><select name="reanalysis_no" onChange="ReAnalyse()">
+            <option>new</option>
+            <TMPL_VAR NAME=reanalysis>
+          </select></div>
+
+        <div class="shift-dn">Analysis name</div>
+        <div><input name="analysis_name" type="text" value="<TMPL_VAR NAME=analysis_name>" size="40" maxlength="40">
+        </div>
+
+        <div class="shift-dn">Analysis description</div>
+        <div><textarea name="analysis_description" cols="50" rows="4"><TMPL_VAR NAME=analysis_description></textarea></div>
+
+        <div class="shift-dn">Cases</div>
+        <div><textarea name="cases_ids" cols="50" rows="4"><TMPL_VAR NAME=cases_ids></textarea></div>
+
+        <div class="shift-dn">Controls</div>
+        <div><textarea name="controls_ids" cols="50" rows="4"><TMPL_VAR NAME=controls_ids></textarea></div>
+
+        <div>Available samples</div>
+        <div>
+          <TMPL_VAR NAME=samples>
+        </div>
+
+        <div>Require autozygosity</div>
+        <div>
+          <div class="toggle-outer">
+            <span>No</span>
+            <div class="toggle greygreen">
+              <input type="checkbox" name="autozygosity_required" value="1" <TMPL_VAR NAME=autozygosity_required>>
+              <div class="indicator"></div>
+            </div>
+            <span>Yes</span>
+          </div>
+          <small>Selecting <i>Yes</i> will <b>only</b> detect regions in which
+            <b>all</b> affected individuals are autozygous (i.e. have the same genotype)<br></small>
+        </div>
+
+        <div class="shift-dn">Limit block length</div>
+        <div><input name="limit_block_length" type="text" size="4" maxlength="4"
+            value="<TMPL_VAR NAME=limit_block_length>">
+          <small>(in Mbp) - Leave empty to use standard settings for chip (6 Mbp) </small>
+        </div>
+
+        <div>Minimum numbers of variants </div>
+        <div><input name="minimum_variants" type="text" size="4" maxlength="4" value="<TMPL_VAR NAME=minimum_variants>">
+          <small>Leave empty to use the default value 15</small>
+        </div>
+
+        <div>Only count blocks longer than</div>
+        <div><input name="lower_limit" type="text" size="4" maxlength="4" value="<TMPL_VAR NAME=lower_limit>">
+          <small>(in Mbp) - Default is 0 (i.e. every homozygous block is counted)</small>
+        </div>
+      </div>
+      <div class="grid extra">
+        <div class="gc-2">
+          <button type="submit" name="Submit">Submit</button>
+          <button type="reset" name="Reset">Reset</button>
+        </div>
+
+      </div>
+      <TMPL_VAR NAME=out>
+    </form>
+  </div>
+
+  <script>
+    function ReAnalyse(undef) {
+      //	alert (document.form1.target);
+      form1 = document.getElementById("form1");
+      form1.action = '/AM/AnalysisSettings.cgi';
+      form1.submit();
+    }
+
+  </script>
+</body>
+
+</html>

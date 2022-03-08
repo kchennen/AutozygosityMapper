@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<TMPL_INCLUDE _boilerplate.tmpl />
+
+<body>
+  <TMPL_INCLUDE _header_footer.tmpl />
+
+  <div class="outwrapper main prel page-std-form">
+    <form action="/AM/SendPassword.cgi" method="post">
+      <div class="grid">
+        <div>Email</div>
+        <div><input name="user_email" type="text" size="40" maxlength="200">
+        </div>
+        <div class="gc-s2">Please solve the following task:</div>
+        <div><B><span id="captcha"></span></B></div>
+        <div>
+          <input type="text" name="cap" id="cap" size="3">
+          <input id="cap_id" type="hidden" name="cap_id">
+        </div>
+
+        <div><button type="submit" name="Submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script language="JavaScript" type="text/javascript">
+    function getCaptcha() {
+      var captchas = ["Sum of five and two", "Six minus four", "Seven minus three"];
+      var cap_number = [1, 2, 3];
+      var random = [Math.floor(Math.random() * 3)]; //oder *captchas.length 
+      var curr_random = random;
+      document.getElementById("captcha").innerHTML = captchas[curr_random];
+      //       document.write(captchas[curr_random]);
+      document.forms[0].cap_id.value = cap_number[curr_random];
+      //     document.write(cap_number[curr_random]);
+    }
+    getCaptcha();
+  </script>
+
+</body>
+
+</html>
